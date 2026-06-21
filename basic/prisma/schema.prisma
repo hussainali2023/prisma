@@ -12,4 +12,6 @@ model User{
   name String
   email String @unique
   profilePhot String?
+  created_at DateTime
+  updated_at DateTime @updatedAt
 }
