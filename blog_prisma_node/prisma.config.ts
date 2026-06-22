@@ -16,7 +16,7 @@ if (!databaseUrl) {
 console.log("✅ DATABASE_URL found:", databaseUrl.substring(0, 20) + "...");
 
 export default defineConfig({
-  schema: "prisma/schema.prisma",
+  schema: "prisma/models",
   migrations: {
     path: "prisma/migrations",
   },
