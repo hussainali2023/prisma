@@ -45,6 +45,11 @@ const createUser = catchAsync(async(req:Request, res:Response, next:NextFunction
     })
 })
 
+const getProfile = catchAsync(async(req:Request, res:Response) =>{
+
+})
+
 export const userController = {
-    createUser
+    createUser,
+    getProfile
 }

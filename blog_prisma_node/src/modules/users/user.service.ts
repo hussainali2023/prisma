@@ -55,6 +55,12 @@ const registerUser = async (payload:RegisterUserPayload) =>{
     return user;
 }
 
+const getProfileService = async() => {
+
+}
+
 export const userService = {
-    registerUser
+    registerUser,
+    getProfileService
+    
 }
