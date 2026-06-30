@@ -48,31 +48,25 @@ const createUser = catchAsync(async(req:Request, res:Response, next:NextFunction
     })
 })
 
-const getProfile = catchAsync(async(req:Request, res:Response) =>{
-    const cookies = req.cookies;
-    
-    const {accessToken} = cookies;
+const getProfile = catchAsync( async (req: Request, res: Response, next: NextFunction) => {
 
-    // const verifiedToken = jwt.verify(accessToken, config.jwt_access_secret)
+    // const {accessToken} = req.cookies;
+    // console.log(req.user, "user request");
 
-    // console.log(verifiedToken);
+    // const verifiedToken = jwtUtils.verifyToken(accessToken, config.jwt_access_secret)
 
-    const verifiedToken = jwtUtils.verifiedToken(accessToken, config.jwt_access_secret)
+    // if(typeof verifiedToken === "string"){
+    //     throw new Error(verifiedToken);
+    // }
 
-    if(typeof verifiedToken === "string"){
-        throw new Error (verifiedToken)
-    }
+    const profile = await userService.getProfileService(req.user?.id as string)
 
-
-    const profile = await userService.getProfileService(verifiedToken.id)
-
-    // res.send(verifiedToken)
 
     sendResponse(res, {
-        success:true,
-        statusCode:status.OK,
-        message:"Profile Fetched successfully",
-        data: {profile}
+        success: true,
+        statusCode: status.OK,
+        message: "User profile fetched successfully",
+        data: { profile }
     })
 })
 
